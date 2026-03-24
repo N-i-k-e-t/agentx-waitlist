@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgentX - World's First Cross-Border AI Agent</title>
+<title>AgentX - Cross-Border AI Market Intelligence</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#0a0a0f;--surface:#12121a;--accent:#6c5ce7;--accent2:#a29bfe;--text:#e8e8f0;--muted:#8888a0;--glow:rgba(108,92,231,0.3)}
@@ -21,8 +21,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 @keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.05)}}
 .hero-content{position:relative;z-index:1;max-width:800px}
 .badge{display:inline-block;padding:8px 20px;background:rgba(108,92,231,0.15);border:1px solid rgba(108,92,231,0.3);border-radius:50px;font-size:0.85rem;color:var(--accent2);margin-bottom:24px;letter-spacing:1px}
-h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;line-height:1.1;margin-bottom:24px;background:linear-gradient(135deg,#fff 0%,var(--accent2) 50%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.subtitle{font-size:1.2rem;color:var(--muted);max-width:600px;margin:0 auto 40px;line-height:1.6}
+h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:900;line-height:1.1;margin-bottom:24px;background:linear-gradient(135deg,#fff 0%,var(--accent2) 50%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{font-size:1.15rem;color:var(--muted);max-width:620px;margin:0 auto 40px;line-height:1.7}
 .cta-group{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 .btn-primary{padding:16px 40px;background:linear-gradient(135deg,var(--accent),#e84393);color:#fff;border:none;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 30px var(--glow)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 40px var(--glow)}
@@ -32,9 +32,36 @@ h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;line-height:1.1;margin-bot
 .stat{text-align:center}
 .stat-num{font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--accent2),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .stat-label{font-size:0.85rem;color:var(--muted);margin-top:4px}
+.problem{padding:100px 40px;max-width:1000px;margin:0 auto}
+.problem h2{text-align:center;font-size:2.2rem;font-weight:800;margin-bottom:16px}
+.problem .section-sub{text-align:center;color:var(--muted);margin-bottom:50px;font-size:1.05rem;line-height:1.7}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.problem-list{list-style:none}
+.problem-list li{padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.06);color:var(--muted);font-size:1rem;display:flex;align-items:center;gap:12px}
+.problem-list li span{color:#ff6b6b;font-size:1.2rem}
+.solution-box{background:var(--surface);border:1px solid rgba(108,92,231,0.2);border-radius:16px;padding:36px;text-align:center}
+.solution-box h3{font-size:1.3rem;margin-bottom:12px;color:var(--accent2)}
+.solution-box p{color:var(--muted);line-height:1.6}
+.how{padding:100px 40px;max-width:1200px;margin:0 auto}
+.how h2{text-align:center;font-size:2.2rem;font-weight:800;margin-bottom:16px}
+.how .section-sub{text-align:center;color:var(--muted);margin-bottom:60px;font-size:1.05rem}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+.step{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:32px;text-align:center;position:relative}
+.step-num{width:40px;height:40px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;margin:0 auto 16px}
+.step h3{font-size:1.1rem;margin-bottom:8px}
+.step p{color:var(--muted);font-size:0.9rem;line-height:1.5}
+.who{padding:100px 40px;max-width:1100px;margin:0 auto}
+.who h2{text-align:center;font-size:2.2rem;font-weight:800;margin-bottom:16px}
+.who .section-sub{text-align:center;color:var(--muted);margin-bottom:60px;font-size:1.05rem}
+.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.who-card{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:32px;transition:all 0.3s}
+.who-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.who-card .icon{font-size:2rem;margin-bottom:12px}
+.who-card h3{font-size:1.1rem;margin-bottom:8px}
+.who-card p{color:var(--muted);font-size:0.9rem;line-height:1.6}
 .features{padding:100px 40px;max-width:1200px;margin:0 auto}
-.section-title{text-align:center;font-size:2.2rem;font-weight:800;margin-bottom:16px}
-.section-sub{text-align:center;color:var(--muted);margin-bottom:60px;font-size:1.1rem}
+.features h2{text-align:center;font-size:2.2rem;font-weight:800;margin-bottom:16px}
+.features .section-sub{text-align:center;color:var(--muted);margin-bottom:60px;font-size:1.05rem}
 .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
 .feature-card{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:36px;transition:all 0.3s}
 .feature-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(108,92,231,0.15)}
@@ -53,13 +80,13 @@ h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;line-height:1.1;margin-bot
 .cta-box h2{font-size:2.2rem;font-weight:800;margin-bottom:16px}
 .cta-box p{color:var(--muted);margin-bottom:32px;font-size:1.05rem}
 footer{text-align:center;padding:40px;color:var(--muted);font-size:0.85rem;border-top:1px solid rgba(255,255,255,0.05)}
-@media(max-width:768px){.nav{padding:14px 20px}.stats{gap:30px}.features,.regions,.cta-section{padding:60px 20px}.cta-box{padding:40px 24px}}
+@media(max-width:768px){.nav{padding:14px 20px}.stats{gap:30px}.problem-grid{grid-template-columns:1fr}.features,.regions,.cta-section,.who,.how,.problem{padding:60px 20px}.cta-box{padding:40px 24px}}
 </style>
 </head>
 <body>
 <nav class="nav">
 <div class="logo">AgentX</div>
-<a href="https://docs.google.com/forms/d/1Glr-IWhrhZ-9xHzZqJkKBUw9X1-_iZGpm88ZKMt0mjo/viewform" target="_blank" class="nav-cta">Join Waitlist</a>
+<a href="https://docs.google.com/forms/d/1Glr-IWhrhZ-9xHzZqJkKBUw9X1-_iZGpm88ZKMt0mjo/viewform" target="_blank" class="nav-cta">Get Early Access</a>
 </nav>
 
 <section class="hero">
@@ -69,96 +96,178 @@ footer{text-align:center;padding:40px;color:var(--muted);font-size:0.85rem;borde
 <div class="orb orb-3"></div>
 </div>
 <div class="hero-content">
-<div class="badge">EARLY ACCESS - LIMITED SPOTS</div>
-<h1>The World's First Cross-Border AI Agent</h1>
-<p class="subtitle">One AI agent that operates across US, Europe, China, and Russia. Instant multi-region intelligence. Zero data retained. Built for the future of global business.</p>
+<div class="badge">AI-POWERED MARKET INTELLIGENCE</div>
+<h1>Research Any Market Across US, Europe, China & Russia In Minutes</h1>
+<p class="subtitle">AgentX is an AI agent that simultaneously searches Google, Baidu, Yandex, and European sources to give you one unified market intelligence report. Stop spending days on cross-border research.</p>
 <div class="cta-group">
-<a href="https://docs.google.com/forms/d/1Glr-IWhrhZ-9xHzZqJkKBUw9X1-_iZGpm88ZKMt0mjo/viewform" target="_blank" class="btn-primary">Get Early Access</a>
-<a href="#features" class="btn-secondary">Learn More</a>
+<a href="https://docs.google.com/forms/d/1Glr-IWhrhZ-9xHzZqJkKBUw9X1-_iZGpm88ZKMt0mjo/viewform" target="_blank" class="btn-primary">Join the Waitlist</a>
+<a href="#problem" class="btn-secondary">See How It Works</a>
 </div>
 <div class="stats">
-<div class="stat"><div class="stat-num">4</div><div class="stat-label">Global Regions</div></div>
-<div class="stat"><div class="stat-num">&lt;1s</div><div class="stat-label">Response Time</div></div>
-<div class="stat"><div class="stat-num">0</div><div class="stat-label">Data Retained</div></div>
-<div class="stat"><div class="stat-num">1st</div><div class="stat-label">Of Its Kind</div></div>
+<div class="stat"><div class="stat-num">4</div><div class="stat-label">Internet Regions</div></div>
+<div class="stat"><div class="stat-num">10x</div><div class="stat-label">Faster Than Manual</div></div>
+<div class="stat"><div class="stat-num">1</div><div class="stat-label">Unified Report</div></div>
+<div class="stat"><div class="stat-num">0</div><div class="stat-label">Data Stored</div></div>
+</div>
+</div>
+</section>
+
+<section class="problem" id="problem">
+<h2>The Problem: Global Research Is Broken</h2>
+<p class="section-sub">The world's internet is split into 4 separate ecosystems. Each has its own search engines, social platforms, and data sources. Getting a complete picture today requires manual work across all of them.</p>
+<div class="problem-grid">
+<ul class="problem-list">
+<li><span>&#10060;</span> Manually searching Google, Baidu, Yandex separately</li>
+<li><span>&#10060;</span> Translating content from Chinese, Russian, European languages</li>
+<li><span>&#10060;</span> Navigating GDPR, Great Firewall, and regional regulations</li>
+<li><span>&#10060;</span> Stitching together fragmented data into one report</li>
+<li><span>&#10060;</span> Takes days or weeks for a single cross-border analysis</li>
+</ul>
+<div class="solution-box">
+<h3>&#9989; AgentX Does This In Minutes</h3>
+<p>One prompt. Four regions. One unified report. Our multi-agent AI system deploys specialized sub-agents for each region, gathers intelligence simultaneously, and delivers a structured report. Then wipes all data.</p>
+</div>
+</div>
+</section>
+
+<section class="how">
+<h2>How AgentX Works</h2>
+<p class="section-sub">From your question to a global intelligence report in 4 steps</p>
+<div class="steps">
+<div class="step">
+<div class="step-num">1</div>
+<h3>You Ask a Question</h3>
+<p>"How is EV adoption perceived across US, EU, China, and Russia?"</p>
+</div>
+<div class="step">
+<div class="step-num">2</div>
+<h3>Agents Deploy</h3>
+<p>4 specialized sub-agents activate: one for Google/Bing, one for EU sources, one for Baidu/WeChat, one for Yandex/VK.</p>
+</div>
+<div class="step">
+<div class="step-num">3</div>
+<h3>Data Synthesized</h3>
+<p>Results are translated, compared, and merged by a central orchestrator into a single structured report.</p>
+</div>
+<div class="step">
+<div class="step-num">4</div>
+<h3>Report Delivered</h3>
+<p>You get one clean report with regional comparisons, sentiment analysis, and key insights. All data is then wiped.</p>
+</div>
+</div>
+</section>
+
+<section class="who">
+<h2>Who Is AgentX For?</h2>
+<p class="section-sub">Built for anyone who needs to understand markets beyond their own borders</p>
+<div class="who-grid">
+<div class="who-card">
+<div class="icon">&#128188;</div>
+<h3>Founders & Startups</h3>
+<p>Validate product-market fit across US, EU, China, and Russia before expanding. Understand local competition, pricing, and demand signals in each region.</p>
+</div>
+<div class="who-card">
+<div class="icon">&#128200;</div>
+<h3>Market Researchers</h3>
+<p>Compare how trends, brands, and products are perceived across all four internet ecosystems. Get sentiment analysis and source comparisons in one report.</p>
+</div>
+<div class="who-card">
+<div class="icon">&#127970;</div>
+<h3>Enterprise Strategy Teams</h3>
+<p>Run competitive intelligence across geopolitically divided markets. Track how competitors position themselves differently in each region.</p>
+</div>
+<div class="who-card">
+<div class="icon">&#128176;</div>
+<h3>Investors & VCs</h3>
+<p>Due diligence on companies operating in multiple regions. Verify claims about international traction, market size, and competitive landscape.</p>
+</div>
+<div class="who-card">
+<div class="icon">&#127891;</div>
+<h3>Academics & Researchers</h3>
+<p>Cross-border sentiment analysis, geopolitical research, and comparative studies. Access data from all four internet spheres without language barriers.</p>
+</div>
+<div class="who-card">
+<div class="icon">&#128666;</div>
+<h3>Export/Import Businesses</h3>
+<p>Understand demand signals, pricing trends, and regulatory differences across target markets before making supply chain decisions.</p>
 </div>
 </div>
 </section>
 
 <section class="features" id="features">
-<h2 class="section-title">Why AgentX is Different</h2>
-<p class="section-sub">Built from the ground up for cross-border AI operations</p>
+<h2>What Makes AgentX Different</h2>
+<p class="section-sub">Purpose-built for cross-border intelligence, not just another chatbot</p>
 <div class="feature-grid">
 <div class="feature-card">
 <div class="feature-icon">&#127760;</div>
 <h3>Multi-Region Intelligence</h3>
-<p>Simultaneously queries and synthesizes data from all four major internet spheres - Western, European, Chinese, and Russian networks.</p>
+<p>Simultaneously queries Google, Bing, Baidu, Yandex, and regional social platforms. No manual switching between search engines.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">&#129302;</div>
+<h3>Specialized Sub-Agents</h3>
+<p>Each region gets its own AI agent trained on local APIs, languages, and data structures. Coordinated by a central orchestrator for accuracy.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">&#128221;</div>
+<h3>Unified Reports</h3>
+<p>One structured report comparing insights across all regions. Side-by-side analysis with sources cited. No manual stitching required.</p>
 </div>
 <div class="feature-card">
 <div class="feature-icon">&#128274;</div>
 <h3>Zero-Trace Architecture</h3>
-<p>Every query session is disposable. Data is processed, delivered, and permanently wiped. No logs, no traces, no storage.</p>
+<p>Every session is disposable. Your queries are processed, reports delivered, and all data permanently wiped. Nothing is stored or logged.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">&#127759;</div>
+<h3>Auto-Translation</h3>
+<p>Results from Chinese, Russian, and European sources are automatically translated and contextualized. No language skills needed.</p>
 </div>
 <div class="feature-card">
 <div class="feature-icon">&#9889;</div>
-<h3>Instant Deployment</h3>
-<p>No infrastructure setup needed. Deploy the agent, get your cross-border intelligence report, and move on. Built for speed.</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon">&#129302;</div>
-<h3>Multi-Agent Swarm</h3>
-<p>Specialized sub-agents handle each region's unique APIs, languages, and data structures. Coordinated by a central orchestrator.</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon">&#128640;</div>
-<h3>Prompt Adaptation</h3>
-<p>Automatically translates and optimizes your prompts for each region's dominant AI models - GPT, Mistral, Ernie, and more.</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon">&#128202;</div>
-<h3>Unified Reports</h3>
-<p>Get one clean, structured report comparing insights across all regions. No manual stitching. No data silos.</p>
+<h3>Minutes, Not Days</h3>
+<p>What takes a research team days to compile manually, AgentX delivers in minutes. Same depth, fraction of the time.</p>
 </div>
 </div>
 </section>
 
 <section class="regions">
-<h2 class="section-title">Four Regions. One Agent.</h2>
-<p class="section-sub">Breaking through the world's internet boundaries</p>
+<h2>Four Internet Ecosystems. One Agent.</h2>
+<p class="section-sub">Each region has its own search engines, social platforms, and regulations. AgentX bridges them all.</p>
 <div class="region-grid">
 <div class="region-card">
 <div class="region-flag">&#127482;&#127480;</div>
 <h3>United States</h3>
-<p>Google, Bing, GPT ecosystem</p>
+<p>Google, Bing, Reddit, GPT ecosystem</p>
 </div>
 <div class="region-card">
 <div class="region-flag">&#127466;&#127482;</div>
 <h3>Europe</h3>
-<p>GDPR-compliant, Mistral AI</p>
+<p>GDPR-compliant sources, Mistral AI</p>
 </div>
 <div class="region-card">
 <div class="region-flag">&#127464;&#127475;</div>
 <h3>China</h3>
-<p>Baidu, Ernie, WeChat ecosystem</p>
+<p>Baidu, Ernie, WeChat, Douyin</p>
 </div>
 <div class="region-card">
 <div class="region-flag">&#127479;&#127482;</div>
 <h3>Russia</h3>
-<p>Yandex, VK, local networks</p>
+<p>Yandex, VK, Telegram, local sources</p>
 </div>
 </div>
 </section>
 
 <section class="cta-section">
 <div class="cta-box">
-<h2>Be First. Get Access.</h2>
-<p>We are opening early access to a limited group of founders, researchers, and enterprises. Fill out the form to secure your spot.</p>
+<h2>Get Access Before Public Launch</h2>
+<p>We are opening early access to a limited group of founders, researchers, and enterprises who need cross-border market intelligence. Fill the form to secure your spot.</p>
 <a href="https://docs.google.com/forms/d/1Glr-IWhrhZ-9xHzZqJkKBUw9X1-_iZGpm88ZKMt0mjo/viewform" target="_blank" class="btn-primary">Fill the Early Access Form</a>
 </div>
 </section>
 
 <footer>
-<p>AgentX by ANDS Network &copy; 2026. Building the future of cross-border AI.</p>
+<p>AgentX by ANDS Network &copy; 2026. Cross-border AI market intelligence.</p>
 </footer>
 </body>
 </html>
