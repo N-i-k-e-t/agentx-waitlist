@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentX - World's First Cross-Border AI Agent</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--surface:#12121a;--accent:#6c5ce7;--accent2:#a29bfe;--text:#e8e8f0;--muted:#8888a0;--glow:rgba(108,92,231,0.3)}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+.nav{position:fixed;top:0;width:100%;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(108,92,231,0.1)}
+.logo{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-cta{padding:10px 24px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.3s}
+.nav-cta:hover{background:var(--accent2);transform:translateY(-1px)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 20px 80px;position:relative}
+.hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:0}
+.hero-bg .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.4;animation:float 8s ease-in-out infinite}
+.orb-1{width:400px;height:400px;background:var(--accent);top:-100px;left:-100px}
+.orb-2{width:300px;height:300px;background:#e84393;bottom:100px;right:-50px;animation-delay:3s !important}
+.orb-3{width:250px;height:250px;background:#00cec9;top:50%;left:50%;animation-delay:5s !important}
+@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.05)}}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.badge{display:inline-block;padding:8px 20px;background:rgba(108,92,231,0.15);border:1px solid rgba(108,92,231,0.3);border-radius:50px;font-size:0.85rem;color:var(--accent2);margin-bottom:24px;letter-spacing:1px}
+h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;line-height:1.1;margin-bottom:24px;background:linear-gradient(135deg,#fff 0%,var(--accent2) 50%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{font-size:1.2rem;color:var(--muted);max-width:600px;margin:0 auto 40px;line-height:1.6}
+.cta-group{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{padding:16px 40px;background:linear-gradient(135deg,var(--accent),#e84393);color:#fff;border:none;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 30px var(--glow)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 40px var(--glow)}
+.btn-secondary{padding:16px 40px;background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.2);border-radius:12px;font-size:1.1rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.3s}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent2)}
+.stats{display:flex;gap:60px;justify-content:center;margin-top:60px;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--accent2),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:0.85rem;color:var(--muted);margin-top:4px}
+.features{padding:100px 40px;max-width:1200px;margin:0 auto}
+.section-title{text-align:center;font-size:2.2rem;font-weight:800;margin-bottom:16px}
+.section-sub{text-align:center;color:var(--muted);margin-bottom:60px;font-size:1.1rem}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.feature-card{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:36px;transition:all 0.3s}
+.feature-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(108,92,231,0.15)}
+.feature-icon{font-size:2.5rem;margin-bottom:16px}
+.feature-card h3{font-size:1.2rem;margin-bottom:10px;font-weight:700}
+.feature-card p{color:var(--muted);line-height:1.6;font-size:0.95rem}
+.regions{padding:100px 40px;text-align:center}
+.region-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:900px;margin:0 auto}
+.region-card{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:32px 20px;transition:all 0.3s}
+.region-card:hover{border-color:var(--accent);box-shadow:0 8px 30px rgba(108,92,231,0.1)}
+.region-flag{font-size:3rem;margin-bottom:12px}
+.region-card h3{font-size:1.1rem;margin-bottom:6px}
+.region-card p{color:var(--muted);font-size:0.85rem}
+.cta-section{padding:100px 40px;text-align:center}
+.cta-box{max-width:700px;margin:0 auto;background:linear-gradient(135deg,rgba(108,92,231,0.15),rgba(232,67,147,0.1));border:1px solid rgba(108,92,231,0.2);border-radius:24px;padding:60px 40px}
+.cta-box h2{font-size:2.2rem;font-weight:800;margin-bottom:16px}
+.cta-box p{color:var(--muted);margin-bottom:32px;font-size:1.05rem}
+footer{text-align:center;padding:40px;color:var(--muted);font-size:0.85rem;border-top:1px solid rgba(255,255,255,0.05)}
+@media(max-width:768px){.nav{padding:14px 20px}.stats{gap:30px}.features,.regions,.cta-section{padding:60px 20px}.cta-box{padding:40px 24px}}
+</style>
+</head>
+<body>
+<nav class="nav">
+<div class="logo">AgentX</div>
+<a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank" class="nav-cta">Join Waitlist</a>
+</nav>
+
+<section class="hero">
+<div class="hero-bg">
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+</div>
+<div class="hero-content">
+<div class="badge">EARLY ACCESS - LIMITED SPOTS</div>
+<h1>The World's First Cross-Border AI Agent</h1>
+<p class="subtitle">One AI agent that operates across US, Europe, China, and Russia. Instant multi-region intelligence. Zero data retained. Built for the future of global business.</p>
+<div class="cta-group">
+<a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank" class="btn-primary">Get Early Access</a>
+<a href="#features" class="btn-secondary">Learn More</a>
+</div>
+<div class="stats">
+<div class="stat"><div class="stat-num">4</div><div class="stat-label">Global Regions</div></div>
+<div class="stat"><div class="stat-num">&lt;1s</div><div class="stat-label">Response Time</div></div>
+<div class="stat"><div class="stat-num">0</div><div class="stat-label">Data Retained</div></div>
+<div class="stat"><div class="stat-num">1st</div><div class="stat-label">Of Its Kind</div></div>
+</div>
+</div>
+</section>
+
+<section class="features" id="features">
+<h2 class="section-title">Why AgentX is Different</h2>
+<p class="section-sub">Built from the ground up for cross-border AI operations</p>
+<div class="feature-grid">
+<div class="feature-card">
+<div class="feature-icon">&#127760;</div>
+<h3>Multi-Region Intelligence</h3>
+<p>Simultaneously queries and synthesizes data from all four major internet spheres - Western, European, Chinese, and Russian networks.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">&#128274;</div>
+<h3>Zero-Trace Architecture</h3>
+<p>Every query session is disposable. Data is processed, delivered, and permanently wiped. No logs, no traces, no storage.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">&#9889;</div>
+<h3>Instant Deployment</h3>
+<p>No infrastructure setup needed. Deploy the agent, get your cross-border intelligence report, and move on. Built for speed.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">&#129302;</div>
+<h3>Multi-Agent Swarm</h3>
+<p>Specialized sub-agents handle each region's unique APIs, languages, and data structures. Coordinated by a central orchestrator.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">&#128640;</div>
+<h3>Prompt Adaptation</h3>
+<p>Automatically translates and optimizes your prompts for each region's dominant AI models - GPT, Mistral, Ernie, and more.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">&#128202;</div>
+<h3>Unified Reports</h3>
+<p>Get one clean, structured report comparing insights across all regions. No manual stitching. No data silos.</p>
+</div>
+</div>
+</section>
+
+<section class="regions">
+<h2 class="section-title">Four Regions. One Agent.</h2>
+<p class="section-sub">Breaking through the world's internet boundaries</p>
+<div class="region-grid">
+<div class="region-card">
+<div class="region-flag">&#127482;&#127480;</div>
+<h3>United States</h3>
+<p>Google, Bing, GPT ecosystem</p>
+</div>
+<div class="region-card">
+<div class="region-flag">&#127466;&#127482;</div>
+<h3>Europe</h3>
+<p>GDPR-compliant, Mistral AI</p>
+</div>
+<div class="region-card">
+<div class="region-flag">&#127464;&#127475;</div>
+<h3>China</h3>
+<p>Baidu, Ernie, WeChat ecosystem</p>
+</div>
+<div class="region-card">
+<div class="region-flag">&#127479;&#127482;</div>
+<h3>Russia</h3>
+<p>Yandex, VK, local networks</p>
+</div>
+</div>
+</section>
+
+<section class="cta-section">
+<div class="cta-box">
+<h2>Be First. Get Access.</h2>
+<p>We are opening early access to a limited group of founders, researchers, and enterprises. Fill out the form to secure your spot.</p>
+<a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank" class="btn-primary">Fill the Early Access Form</a>
+</div>
+</section>
+
+<footer>
+<p>AgentX by ANDS Network &copy; 2026. Building the future of cross-border AI.</p>
+</footer>
+</body>
+</html>
