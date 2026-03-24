@@ -89,6 +89,7 @@ footer{text-align:center;padding:40px;color:var(--muted);font-size:0.8rem;border
 footer span{color:var(--accent)}
 @media(max-width:768px){.nav{padding:14px 20px}.stats{gap:30px}.problem-grid{grid-template-columns:1fr}.features,.regions,.cta-section,.who,.how,.problem{padding:60px 20px}.cta-box{padding:40px 24px}}
 .reveal{opacity:0;transform:translateY(40px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}.reveal.visible{opacity:1;transform:translateY(0)}.typing-cursor{display:inline-block;width:3px;height:1em;background:var(--accent);margin-left:4px;animation:blink 0.8s infinite}@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}.status-bar{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:20px;font-size:0.8rem;color:var(--muted)}.status-dot{width:8px;height:8px;background:#00ff88;border-radius:50%;animation:pulse-dot 2s infinite}@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(0,255,136,0.4)}50%{box-shadow:0 0 0 8px rgba(0,255,136,0)}}.mouse-glow{position:fixed;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(0,240,255,0.06),transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:left 0.1s,top 0.1s}.hero-terminal{background:rgba(0,0,0,0.4);border:1px solid rgba(0,240,255,0.15);border-radius:4px;padding:20px 24px;margin-top:40px;max-width:600px;margin-left:auto;margin-right:auto;text-align:left;font-family:'Courier New',monospace;font-size:0.85rem;color:var(--accent);position:relative;overflow:hidden}.hero-terminal::before{content:'> AgentX Terminal';display:block;color:var(--muted);font-size:0.7rem;margin-bottom:12px;text-transform:uppercase;letter-spacing:2px}.terminal-line{opacity:0;transform:translateX(-10px);transition:all 0.4s}.terminal-line.show{opacity:1;transform:translateX(0)}
+.brain-section{padding:80px 40px;text-align:center;position:relative;z-index:1;overflow:hidden}.brain-container{position:relative;width:100%;max-width:600px;height:400px;margin:40px auto 0}.brain-canvas{width:100%;height:100%}.ai-avatar{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(0,240,255,0.15),transparent 70%);border:2px solid rgba(0,240,255,0.3);display:flex;align-items:center;justify-content:center;animation:avatar-pulse 3s ease-in-out infinite;box-shadow:0 0 40px rgba(0,240,255,0.15)}@keyframes avatar-pulse{0%,100%{box-shadow:0 0 40px rgba(0,240,255,0.15);transform:translate(-50%,-50%) scale(1)}50%{box-shadow:0 0 60px rgba(0,240,255,0.3);transform:translate(-50%,-50%) scale(1.05)}}.ai-face{width:80px;height:80px}.avatar-label{margin-top:16px;font-size:0.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:3px;animation:pulse 2s infinite}
 </style>
 </head>
 <body>
@@ -119,6 +120,31 @@ footer span{color:var(--accent)}
 <div class="stat"><div class="stat-num">0</div><div class="stat-label">Data Stored</div></div>
 </div>
 </div>
+</section>
+
+<section class="brain-section">
+<h2 class="section-title">The AI Brain Behind AgentX</h2>
+<p class="section-sub">A neural network of specialized agents, connecting data across four internet ecosystems in real-time</p>
+<div class="brain-container">
+<canvas id="brainCanvas" class="brain-canvas"></canvas>
+<div class="ai-avatar">
+<svg class="ai-face" viewBox="0 0 100 100" fill="none">
+<circle cx="50" cy="50" r="48" stroke="rgba(0,240,255,0.3)" stroke-width="1"/>
+<circle cx="50" cy="50" r="38" stroke="rgba(168,85,247,0.2)" stroke-width="0.5"/>
+<ellipse cx="35" cy="42" rx="6" ry="7" fill="rgba(0,240,255,0.8)"><animate attributeName="ry" values="7;2;7" dur="3s" repeatCount="indefinite"/></ellipse>
+<ellipse cx="65" cy="42" rx="6" ry="7" fill="rgba(0,240,255,0.8)"><animate attributeName="ry" values="7;2;7" dur="3s" repeatCount="indefinite"/></ellipse>
+<circle cx="35" cy="42" r="2" fill="#fff"/>
+<circle cx="65" cy="42" r="2" fill="#fff"/>
+<path d="M38 62 Q50 72 62 62" stroke="rgba(0,240,255,0.6)" stroke-width="1.5" fill="none" stroke-linecap="round"><animate attributeName="d" values="M38 62 Q50 72 62 62;M38 64 Q50 68 62 64;M38 62 Q50 72 62 62" dur="4s" repeatCount="indefinite"/></path>
+<line x1="20" y1="35" x2="10" y2="25" stroke="rgba(0,240,255,0.2)" stroke-width="0.5"/>
+<line x1="80" y1="35" x2="90" y2="25" stroke="rgba(0,240,255,0.2)" stroke-width="0.5"/>
+<circle cx="10" cy="25" r="2" fill="rgba(0,240,255,0.4)"><animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/></circle>
+<circle cx="90" cy="25" r="2" fill="rgba(168,85,247,0.4)"><animate attributeName="opacity" values="0.4;1;0.4" dur="2.5s" repeatCount="indefinite"/></circle>
+<path d="M25 20 Q50 10 75 20" stroke="rgba(0,240,255,0.15)" stroke-width="0.5" fill="none"/>
+</svg>
+</div>
+</div>
+<p class="avatar-label">Neural Agent Orchestrator - Active</p>
 </section>
 
 <section class="problem" id="problem">
@@ -295,6 +321,10 @@ const glow=document.createElement('div');glow.className='mouse-glow';document.bo
 // Terminal
 const heroC=document.querySelector('.hero-content');if(heroC){heroC.insertAdjacentHTML('beforeend','<div class="status-bar"><div class="status-dot"></div>System Online | Multi-Agent Network Active</div><div class="hero-terminal"><div class="terminal-line" id="tl1">$ agentx query "EV market analysis"</div><div class="terminal-line" id="tl2" style="color:#00ff88">Deploying agents: US, EU, CN, RU...</div><div class="terminal-line" id="tl3" style="color:#a855f7">Scanning Google, Baidu, Yandex, EU sources...</div><div class="terminal-line" id="tl4" style="color:#00ff88">Report ready. 4 regions. 47 sources.</div><div class="terminal-line" id="tl5">Session wiped. Zero trace.<span class="typing-cursor"></span></div></div>')}
 setTimeout(()=>{['tl1','tl2','tl3','tl4','tl5'].forEach((id,i)=>{setTimeout(()=>{const el=document.getElementById(id);if(el)el.classList.add('show')},i*700)})},1000);
+// Brain Neural Network
+const bc=document.getElementById('brainCanvas');if(bc){const bx=bc.getContext('2d');let bw,bh;const nodes=[];const synapses=[];function brainResize(){const r=bc.parentElement.getBoundingClientRect();bw=bc.width=r.width;bh=bc.height=r.height}function createBrain(){nodes.length=0;synapses.length=0;const cx=bw/2,cy=bh/2;for(let i=0;i<35;i++){const angle=Math.random()*Math.PI*2;const dist=60+Math.random()*150;nodes.push({x:cx+Math.cos(angle)*dist,y:cy+Math.sin(angle)*dist,r:1.5+Math.random()*2,baseX:cx+Math.cos(angle)*dist,baseY:cy+Math.sin(angle)*dist,phase:Math.random()*Math.PI*2,speed:0.005+Math.random()*0.01,amp:3+Math.random()*8,color:Math.random()>0.5?'0,240,255':'168,85,247'})}for(let i=0;i<nodes.length;i++){for(let j=i+1;j<nodes.length;j++){const d=Math.hypot(nodes[i].x-nodes[j].x,nodes[i].y-nodes[j].y);if(d<130){synapses.push({a:i,b:j,pulse:Math.random()*Math.PI*2,speed:0.02+Math.random()*0.03})}}}}
+function drawBrain(t){bx.clearRect(0,0,bw,bh);nodes.forEach(n=>{n.x=n.baseX+Math.sin(t*n.speed+n.phase)*n.amp;n.y=n.baseY+Math.cos(t*n.speed*0.7+n.phase)*n.amp*0.6});synapses.forEach(s=>{const a=nodes[s.a],b=nodes[s.b];const pulse=(Math.sin(t*s.speed+s.pulse)+1)/2;bx.beginPath();bx.moveTo(a.x,a.y);bx.lineTo(b.x,b.y);bx.strokeStyle=`rgba(0,240,255,${0.03+pulse*0.12})`;bx.lineWidth=0.5;bx.stroke();const px=a.x+(b.x-a.x)*((Math.sin(t*s.speed*2+s.pulse)+1)/2);const py=a.y+(b.y-a.y)*((Math.sin(t*s.speed*2+s.pulse)+1)/2);bx.beginPath();bx.arc(px,py,1.5,0,Math.PI*2);bx.fillStyle=`rgba(0,240,255,${0.3+pulse*0.5})`;bx.fill()});nodes.forEach(n=>{bx.beginPath();bx.arc(n.x,n.y,n.r,0,Math.PI*2);bx.fillStyle=`rgba(${n.color},0.7)`;bx.fill();bx.beginPath();bx.arc(n.x,n.y,n.r+4,0,Math.PI*2);bx.fillStyle=`rgba(${n.color},0.1)`;bx.fill()});requestAnimationFrame(drawBrain)}
+brainResize();createBrain();drawBrain(0);window.addEventListener('resize',()=>{brainResize();createBrain()})}
 // Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',(e)=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})});
 </script>
