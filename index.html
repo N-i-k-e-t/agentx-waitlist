@@ -6,86 +6,94 @@
 <title>AgentX - Cross-Border AI Market Intelligence</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0a0f;--surface:#12121a;--accent:#6c5ce7;--accent2:#a29bfe;--text:#e8e8f0;--muted:#8888a0;--glow:rgba(108,92,231,0.3)}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
-.nav{position:fixed;top:0;width:100%;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(108,92,231,0.1)}
-.logo{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav-cta{padding:10px 24px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.3s}
-.nav-cta:hover{background:var(--accent2);transform:translateY(-1px)}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 20px 80px;position:relative}
+:root{--bg:#050510;--surface:rgba(15,15,30,0.8);--accent:#00f0ff;--accent2:#a855f7;--accent3:#6366f1;--text:#e8e8f0;--muted:#6b7094;--glow:rgba(0,240,255,0.15);--glow2:rgba(168,85,247,0.15)}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,240,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,240,255,0.03) 1px,transparent 1px);background-size:60px 60px;z-index:0;pointer-events:none}
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.nav{position:fixed;top:0;width:100%;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(5,5,16,0.8);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,240,255,0.1)}
+.logo{font-size:1.4rem;font-weight:800;color:var(--accent);text-shadow:0 0 20px rgba(0,240,255,0.5);letter-spacing:2px}
+.nav-cta{padding:10px 24px;background:transparent;color:var(--accent);border:1px solid var(--accent);border-radius:4px;font-size:0.85rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.3s;text-transform:uppercase;letter-spacing:1px}
+.nav-cta:hover{background:var(--accent);color:var(--bg);box-shadow:0 0 30px rgba(0,240,255,0.4)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 20px 80px;position:relative;z-index:1}
 .hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:0}
-.hero-bg .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.4;animation:float 8s ease-in-out infinite}
-.orb-1{width:400px;height:400px;background:var(--accent);top:-100px;left:-100px}
-.orb-2{width:300px;height:300px;background:#e84393;bottom:100px;right:-50px;animation-delay:3s !important}
-.orb-3{width:250px;height:250px;background:#00cec9;top:50%;left:50%;animation-delay:5s !important}
-@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.05)}}
-.hero-content{position:relative;z-index:1;max-width:800px}
-.badge{display:inline-block;padding:8px 20px;background:rgba(108,92,231,0.15);border:1px solid rgba(108,92,231,0.3);border-radius:50px;font-size:0.85rem;color:var(--accent2);margin-bottom:24px;letter-spacing:1px}
-h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:900;line-height:1.1;margin-bottom:24px;background:linear-gradient(135deg,#fff 0%,var(--accent2) 50%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.subtitle{font-size:1.15rem;color:var(--muted);max-width:620px;margin:0 auto 40px;line-height:1.7}
+.hero-bg .orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:0.3;animation:float 10s ease-in-out infinite}
+.orb-1{width:500px;height:500px;background:var(--accent);top:-150px;left:-150px}
+.orb-2{width:400px;height:400px;background:var(--accent2);bottom:50px;right:-100px;animation-delay:4s !important}
+.orb-3{width:300px;height:300px;background:var(--accent3);top:40%;left:60%;animation-delay:6s !important}
+@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-40px) scale(1.08)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+@keyframes scanline{0%{top:-5%}100%{top:105%}}
+@keyframes glow-border{0%,100%{border-color:rgba(0,240,255,0.2)}50%{border-color:rgba(0,240,255,0.6)}}
+.hero-content{position:relative;z-index:1;max-width:820px}
+.badge{display:inline-block;padding:8px 20px;background:rgba(0,240,255,0.08);border:1px solid rgba(0,240,255,0.3);border-radius:2px;font-size:0.8rem;color:var(--accent);margin-bottom:28px;letter-spacing:3px;text-transform:uppercase;animation:glow-border 3s ease-in-out infinite}
+h1{font-size:clamp(2.5rem,6vw,4.2rem);font-weight:900;line-height:1.08;margin-bottom:24px;color:#fff;text-shadow:0 0 60px rgba(0,240,255,0.2)}
+h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{font-size:1.1rem;color:var(--muted);max-width:620px;margin:0 auto 44px;line-height:1.8}
 .cta-group{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.btn-primary{padding:16px 40px;background:linear-gradient(135deg,var(--accent),#e84393);color:#fff;border:none;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 30px var(--glow)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 40px var(--glow)}
-.btn-secondary{padding:16px 40px;background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.2);border-radius:12px;font-size:1.1rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.3s}
-.btn-secondary:hover{border-color:var(--accent);color:var(--accent2)}
+.btn-primary{padding:16px 40px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:4px;font-size:1rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all 0.3s;text-transform:uppercase;letter-spacing:1px;box-shadow:0 0 30px var(--glow)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 50px var(--glow),0 0 80px var(--glow2)}
+.btn-secondary{padding:16px 40px;background:transparent;color:var(--accent);border:1px solid rgba(0,240,255,0.3);border-radius:4px;font-size:1rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.3s;text-transform:uppercase;letter-spacing:1px}
+.btn-secondary:hover{border-color:var(--accent);box-shadow:0 0 20px var(--glow)}
 .stats{display:flex;gap:60px;justify-content:center;margin-top:60px;flex-wrap:wrap}
-.stat{text-align:center}
-.stat-num{font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--accent2),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.stat-label{font-size:0.85rem;color:var(--muted);margin-top:4px}
+.stat{text-align:center;position:relative}
+.stat-num{font-size:2.8rem;font-weight:900;color:var(--accent);text-shadow:0 0 30px rgba(0,240,255,0.4)}
+.stat-label{font-size:0.8rem;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:2px}
+section{position:relative;z-index:1}
+.section-title{text-align:center;font-size:2.2rem;font-weight:800;margin-bottom:16px;color:#fff}
+.section-sub{text-align:center;color:var(--muted);margin-bottom:60px;font-size:1.05rem;line-height:1.7}
 .problem{padding:100px 40px;max-width:1000px;margin:0 auto}
-.problem h2{text-align:center;font-size:2.2rem;font-weight:800;margin-bottom:16px}
-.problem .section-sub{text-align:center;color:var(--muted);margin-bottom:50px;font-size:1.05rem;line-height:1.7}
 .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
 .problem-list{list-style:none}
-.problem-list li{padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.06);color:var(--muted);font-size:1rem;display:flex;align-items:center;gap:12px}
-.problem-list li span{color:#ff6b6b;font-size:1.2rem}
-.solution-box{background:var(--surface);border:1px solid rgba(108,92,231,0.2);border-radius:16px;padding:36px;text-align:center}
-.solution-box h3{font-size:1.3rem;margin-bottom:12px;color:var(--accent2)}
-.solution-box p{color:var(--muted);line-height:1.6}
+.problem-list li{padding:14px 0;border-bottom:1px solid rgba(0,240,255,0.06);color:var(--muted);font-size:0.95rem;display:flex;align-items:center;gap:12px}
+.problem-list li span{color:#ff4757;font-size:1.2rem}
+.solution-box{background:var(--surface);border:1px solid rgba(0,240,255,0.15);border-radius:4px;padding:36px;text-align:center;position:relative;overflow:hidden}
+.solution-box::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(0,240,255,0.05),transparent 30%);animation:rotate 8s linear infinite}
+@keyframes rotate{100%{transform:rotate(360deg)}}
+.solution-box h3{font-size:1.3rem;margin-bottom:12px;color:var(--accent);position:relative}
+.solution-box p{color:var(--muted);line-height:1.6;position:relative}
 .how{padding:100px 40px;max-width:1200px;margin:0 auto}
-.how h2{text-align:center;font-size:2.2rem;font-weight:800;margin-bottom:16px}
-.how .section-sub{text-align:center;color:var(--muted);margin-bottom:60px;font-size:1.05rem}
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
-.step{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:32px;text-align:center;position:relative}
-.step-num{width:40px;height:40px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;margin:0 auto 16px}
-.step h3{font-size:1.1rem;margin-bottom:8px}
-.step p{color:var(--muted);font-size:0.9rem;line-height:1.5}
+.step{background:var(--surface);border:1px solid rgba(0,240,255,0.08);border-radius:4px;padding:32px;text-align:center;transition:all 0.3s}
+.step:hover{border-color:var(--accent);box-shadow:0 0 30px var(--glow)}
+.step-num{width:44px;height:44px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;margin:0 auto 16px;font-size:1.1rem}
+.step h3{font-size:1.05rem;margin-bottom:8px;color:#fff}
+.step p{color:var(--muted);font-size:0.88rem;line-height:1.5}
 .who{padding:100px 40px;max-width:1100px;margin:0 auto}
-.who h2{text-align:center;font-size:2.2rem;font-weight:800;margin-bottom:16px}
-.who .section-sub{text-align:center;color:var(--muted);margin-bottom:60px;font-size:1.05rem}
 .who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
-.who-card{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:32px;transition:all 0.3s}
-.who-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.who-card{background:var(--surface);border:1px solid rgba(0,240,255,0.06);border-radius:4px;padding:32px;transition:all 0.3s}
+.who-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 0 30px var(--glow)}
 .who-card .icon{font-size:2rem;margin-bottom:12px}
-.who-card h3{font-size:1.1rem;margin-bottom:8px}
-.who-card p{color:var(--muted);font-size:0.9rem;line-height:1.6}
+.who-card h3{font-size:1.05rem;margin-bottom:8px;color:#fff}
+.who-card p{color:var(--muted);font-size:0.88rem;line-height:1.6}
 .features{padding:100px 40px;max-width:1200px;margin:0 auto}
-.features h2{text-align:center;font-size:2.2rem;font-weight:800;margin-bottom:16px}
-.features .section-sub{text-align:center;color:var(--muted);margin-bottom:60px;font-size:1.05rem}
 .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
-.feature-card{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:36px;transition:all 0.3s}
-.feature-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(108,92,231,0.15)}
-.feature-icon{font-size:2.5rem;margin-bottom:16px}
-.feature-card h3{font-size:1.2rem;margin-bottom:10px;font-weight:700}
-.feature-card p{color:var(--muted);line-height:1.6;font-size:0.95rem}
+.feature-card{background:var(--surface);border:1px solid rgba(0,240,255,0.06);border-radius:4px;padding:36px;transition:all 0.3s;position:relative;overflow:hidden}
+.feature-card::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);transition:left 0.6s}
+.feature-card:hover::after{left:100%}
+.feature-card:hover{border-color:var(--accent);box-shadow:0 0 30px var(--glow)}
+.feature-icon{font-size:2.2rem;margin-bottom:16px}
+.feature-card h3{font-size:1.1rem;margin-bottom:10px;font-weight:700;color:#fff}
+.feature-card p{color:var(--muted);line-height:1.6;font-size:0.9rem}
 .regions{padding:100px 40px;text-align:center}
 .region-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:900px;margin:0 auto}
-.region-card{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:32px 20px;transition:all 0.3s}
-.region-card:hover{border-color:var(--accent);box-shadow:0 8px 30px rgba(108,92,231,0.1)}
+.region-card{background:var(--surface);border:1px solid rgba(0,240,255,0.06);border-radius:4px;padding:32px 20px;transition:all 0.3s}
+.region-card:hover{border-color:var(--accent);box-shadow:0 0 20px var(--glow)}
 .region-flag{font-size:3rem;margin-bottom:12px}
-.region-card h3{font-size:1.1rem;margin-bottom:6px}
-.region-card p{color:var(--muted);font-size:0.85rem}
+.region-card h3{font-size:1.05rem;margin-bottom:6px;color:#fff}
+.region-card p{color:var(--muted);font-size:0.82rem}
 .cta-section{padding:100px 40px;text-align:center}
-.cta-box{max-width:700px;margin:0 auto;background:linear-gradient(135deg,rgba(108,92,231,0.15),rgba(232,67,147,0.1));border:1px solid rgba(108,92,231,0.2);border-radius:24px;padding:60px 40px}
-.cta-box h2{font-size:2.2rem;font-weight:800;margin-bottom:16px}
-.cta-box p{color:var(--muted);margin-bottom:32px;font-size:1.05rem}
-footer{text-align:center;padding:40px;color:var(--muted);font-size:0.85rem;border-top:1px solid rgba(255,255,255,0.05)}
+.cta-box{max-width:700px;margin:0 auto;background:var(--surface);border:1px solid rgba(0,240,255,0.15);border-radius:4px;padding:60px 40px;position:relative;overflow:hidden;animation:glow-border 4s ease-in-out infinite}
+.cta-box h2{font-size:2rem;font-weight:800;margin-bottom:16px;color:#fff}
+.cta-box p{color:var(--muted);margin-bottom:32px;font-size:1rem;line-height:1.7}
+footer{text-align:center;padding:40px;color:var(--muted);font-size:0.8rem;border-top:1px solid rgba(0,240,255,0.06);position:relative;z-index:1}
+footer span{color:var(--accent)}
 @media(max-width:768px){.nav{padding:14px 20px}.stats{gap:30px}.problem-grid{grid-template-columns:1fr}.features,.regions,.cta-section,.who,.how,.problem{padding:60px 20px}.cta-box{padding:40px 24px}}
 </style>
 </head>
 <body>
+<canvas id="particles"></canvas>
 <nav class="nav">
-<div class="logo">AgentX</div>
+<div class="logo">AGENT X</div>
 <a href="https://docs.google.com/forms/d/1Glr-IWhrhZ-9xHzZqJkKBUw9X1-_iZGpm88ZKMt0mjo/viewform" target="_blank" class="nav-cta">Get Early Access</a>
 </nav>
 
@@ -96,9 +104,9 @@ footer{text-align:center;padding:40px;color:var(--muted);font-size:0.85rem;borde
 <div class="orb orb-3"></div>
 </div>
 <div class="hero-content">
-<div class="badge">AI-POWERED MARKET INTELLIGENCE</div>
-<h1>Research Any Market Across US, Europe, China & Russia In Minutes</h1>
-<p class="subtitle">AgentX is an AI agent that simultaneously searches Google, Baidu, Yandex, and European sources to give you one unified market intelligence report. Stop spending days on cross-border research.</p>
+<div class="badge">AI-Powered Market Intelligence</div>
+<h1>Research Any Market Across <span>US, Europe, China & Russia</span> In Minutes</h1>
+<p class="subtitle">AgentX is an AI agent that simultaneously searches Google, Baidu, Yandex, and European sources to deliver one unified market intelligence report. Stop spending days on cross-border research.</p>
 <div class="cta-group">
 <a href="https://docs.google.com/forms/d/1Glr-IWhrhZ-9xHzZqJkKBUw9X1-_iZGpm88ZKMt0mjo/viewform" target="_blank" class="btn-primary">Join the Waitlist</a>
 <a href="#problem" class="btn-secondary">See How It Works</a>
@@ -113,7 +121,7 @@ footer{text-align:center;padding:40px;color:var(--muted);font-size:0.85rem;borde
 </section>
 
 <section class="problem" id="problem">
-<h2>The Problem: Global Research Is Broken</h2>
+<h2 class="section-title">The Problem: Global Research Is Broken</h2>
 <p class="section-sub">The world's internet is split into 4 separate ecosystems. Each has its own search engines, social platforms, and data sources. Getting a complete picture today requires manual work across all of them.</p>
 <div class="problem-grid">
 <ul class="problem-list">
@@ -131,7 +139,7 @@ footer{text-align:center;padding:40px;color:var(--muted);font-size:0.85rem;borde
 </section>
 
 <section class="how">
-<h2>How AgentX Works</h2>
+<h2 class="section-title">How AgentX Works</h2>
 <p class="section-sub">From your question to a global intelligence report in 4 steps</p>
 <div class="steps">
 <div class="step">
@@ -158,70 +166,70 @@ footer{text-align:center;padding:40px;color:var(--muted);font-size:0.85rem;borde
 </section>
 
 <section class="who">
-<h2>Who Is AgentX For?</h2>
+<h2 class="section-title">Who Is AgentX For?</h2>
 <p class="section-sub">Built for anyone who needs to understand markets beyond their own borders</p>
 <div class="who-grid">
 <div class="who-card">
 <div class="icon">&#128188;</div>
 <h3>Founders & Startups</h3>
-<p>Validate product-market fit across US, EU, China, and Russia before expanding. Understand local competition, pricing, and demand signals in each region.</p>
+<p>Validate product-market fit across US, EU, China, and Russia before expanding. Understand local competition, pricing, and demand signals.</p>
 </div>
 <div class="who-card">
 <div class="icon">&#128200;</div>
 <h3>Market Researchers</h3>
-<p>Compare how trends, brands, and products are perceived across all four internet ecosystems. Get sentiment analysis and source comparisons in one report.</p>
+<p>Compare how trends, brands, and products are perceived across all four internet ecosystems. Get sentiment analysis in one report.</p>
 </div>
 <div class="who-card">
 <div class="icon">&#127970;</div>
 <h3>Enterprise Strategy Teams</h3>
-<p>Run competitive intelligence across geopolitically divided markets. Track how competitors position themselves differently in each region.</p>
+<p>Run competitive intelligence across geopolitically divided markets. Track how competitors position themselves in each region.</p>
 </div>
 <div class="who-card">
 <div class="icon">&#128176;</div>
 <h3>Investors & VCs</h3>
-<p>Due diligence on companies operating in multiple regions. Verify claims about international traction, market size, and competitive landscape.</p>
+<p>Due diligence on companies operating in multiple regions. Verify claims about international traction and competitive landscape.</p>
 </div>
 <div class="who-card">
 <div class="icon">&#127891;</div>
 <h3>Academics & Researchers</h3>
-<p>Cross-border sentiment analysis, geopolitical research, and comparative studies. Access data from all four internet spheres without language barriers.</p>
+<p>Cross-border sentiment analysis, geopolitical research, and comparative studies across all four internet spheres.</p>
 </div>
 <div class="who-card">
 <div class="icon">&#128666;</div>
 <h3>Export/Import Businesses</h3>
-<p>Understand demand signals, pricing trends, and regulatory differences across target markets before making supply chain decisions.</p>
+<p>Understand demand signals, pricing trends, and regulatory differences across target markets before making decisions.</p>
 </div>
 </div>
 </section>
 
 <section class="features" id="features">
-<h2>What Makes AgentX Different</h2>
+<h2 class="section-title">What Makes AgentX Different</h2>
 <p class="section-sub">Purpose-built for cross-border intelligence, not just another chatbot</p>
 <div class="feature-grid">
 <div class="feature-card">
 <div class="feature-icon">&#127760;</div>
 <h3>Multi-Region Intelligence</h3>
-<p>Simultaneously queries Google, Bing, Baidu, Yandex, and regional social platforms. No manual switching between search engines.</p>
+<p>Simultaneously queries Google, Bing, Baidu, Yandex, and regional social platforms. No manual switching.</p>
 </div>
 <div class="feature-card">
 <div class="feature-icon">&#129302;</div>
 <h3>Specialized Sub-Agents</h3>
-<p>Each region gets its own AI agent trained on local APIs, languages, and data structures. Coordinated by a central orchestrator for accuracy.</p>
+<p>Each region gets its own AI agent trained on local APIs, languages, and data structures. Coordinated by a central orchestrator.</p>
 </div>
 <div class="feature-card">
 <div class="feature-icon">&#128221;</div>
 <h3>Unified Reports</h3>
-<p>One structured report comparing insights across all regions. Side-by-side analysis with sources cited. No manual stitching required.</p>
+<p>One structured report comparing insights across all regions. Side-by-side analysis with sources cited.</p>
 </div>
 <div class="feature-card">
 <div class="feature-icon">&#128274;</div>
 <h3>Zero-Trace Architecture</h3>
-<p>Every session is disposable. Your queries are processed, reports delivered, and all data permanently wiped. Nothing is stored or logged.</p>
+<p>Every session is disposable. Your queries are processed, reports delivered, and all data permanently wiped.</p>
 </div>
 <div class="feature-card">
 <div class="feature-icon">&#127759;</div>
 <h3>Auto-Translation</h3>
-<p>Results from Chinese, Russian, and European sources are automatically translated and contextualized. No language skills needed.</p>
+<p>Results from Chinese, Russian, and European sources are automatically translated and contextualized.</p>
 </div>
 <div class="feature-card">
 <div class="feature-icon">&#9889;</div>
@@ -232,7 +240,7 @@ footer{text-align:center;padding:40px;color:var(--muted);font-size:0.85rem;borde
 </section>
 
 <section class="regions">
-<h2>Four Internet Ecosystems. One Agent.</h2>
+<h2 class="section-title">Four Internet Ecosystems. One Agent.</h2>
 <p class="section-sub">Each region has its own search engines, social platforms, and regulations. AgentX bridges them all.</p>
 <div class="region-grid">
 <div class="region-card">
@@ -267,7 +275,15 @@ footer{text-align:center;padding:40px;color:var(--muted);font-size:0.85rem;borde
 </section>
 
 <footer>
-<p>AgentX by ANDS Network &copy; 2026. Cross-border AI market intelligence.</p>
+<p><span>AGENT X</span> by ANDS Network &copy; 2026. Cross-border AI market intelligence.</p>
 </footer>
+
+<script>
+const c=document.getElementById('particles'),x=c.getContext('2d');let w,h,p=[];
+function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight}
+function init(){p=[];for(let i=0;i<80;i++)p.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5+0.5,dx:(Math.random()-0.5)*0.4,dy:(Math.random()-0.5)*0.4,o:Math.random()*0.5+0.1})}
+function draw(){x.clearRect(0,0,w,h);p.forEach((d,i)=>{d.x+=d.dx;d.y+=d.dy;if(d.x<0||d.x>w)d.dx*=-1;if(d.y<0||d.y>h)d.dy*=-1;x.beginPath();x.arc(d.x,d.y,d.r,0,Math.PI*2);x.fillStyle=`rgba(0,240,255,${d.o})`;x.fill();p.forEach((e,j)=>{if(j<=i)return;const dist=Math.hypot(d.x-e.x,d.y-e.y);if(dist<120){x.beginPath();x.moveTo(d.x,d.y);x.lineTo(e.x,e.y);x.strokeStyle=`rgba(0,240,255,${0.06*(1-dist/120)})`;x.stroke()}})});requestAnimationFrame(draw)}
+window.addEventListener('resize',()=>{resize();init()});resize();init();draw();
+</script>
 </body>
 </html>
