@@ -88,6 +88,7 @@ section{position:relative;z-index:1}
 footer{text-align:center;padding:40px;color:var(--muted);font-size:0.8rem;border-top:1px solid rgba(0,240,255,0.06);position:relative;z-index:1}
 footer span{color:var(--accent)}
 @media(max-width:768px){.nav{padding:14px 20px}.stats{gap:30px}.problem-grid{grid-template-columns:1fr}.features,.regions,.cta-section,.who,.how,.problem{padding:60px 20px}.cta-box{padding:40px 24px}}
+.reveal{opacity:0;transform:translateY(40px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}.reveal.visible{opacity:1;transform:translateY(0)}.typing-cursor{display:inline-block;width:3px;height:1em;background:var(--accent);margin-left:4px;animation:blink 0.8s infinite}@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}.status-bar{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:20px;font-size:0.8rem;color:var(--muted)}.status-dot{width:8px;height:8px;background:#00ff88;border-radius:50%;animation:pulse-dot 2s infinite}@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(0,255,136,0.4)}50%{box-shadow:0 0 0 8px rgba(0,255,136,0)}}.mouse-glow{position:fixed;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(0,240,255,0.06),transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:left 0.1s,top 0.1s}.hero-terminal{background:rgba(0,0,0,0.4);border:1px solid rgba(0,240,255,0.15);border-radius:4px;padding:20px 24px;margin-top:40px;max-width:600px;margin-left:auto;margin-right:auto;text-align:left;font-family:'Courier New',monospace;font-size:0.85rem;color:var(--accent);position:relative;overflow:hidden}.hero-terminal::before{content:'> AgentX Terminal';display:block;color:var(--muted);font-size:0.7rem;margin-bottom:12px;text-transform:uppercase;letter-spacing:2px}.terminal-line{opacity:0;transform:translateX(-10px);transition:all 0.4s}.terminal-line.show{opacity:1;transform:translateX(0)}
 </style>
 </head>
 <body>
@@ -284,6 +285,18 @@ function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight}
 function init(){p=[];for(let i=0;i<80;i++)p.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5+0.5,dx:(Math.random()-0.5)*0.4,dy:(Math.random()-0.5)*0.4,o:Math.random()*0.5+0.1})}
 function draw(){x.clearRect(0,0,w,h);p.forEach((d,i)=>{d.x+=d.dx;d.y+=d.dy;if(d.x<0||d.x>w)d.dx*=-1;if(d.y<0||d.y>h)d.dy*=-1;x.beginPath();x.arc(d.x,d.y,d.r,0,Math.PI*2);x.fillStyle=`rgba(0,240,255,${d.o})`;x.fill();p.forEach((e,j)=>{if(j<=i)return;const dist=Math.hypot(d.x-e.x,d.y-e.y);if(dist<120){x.beginPath();x.moveTo(d.x,d.y);x.lineTo(e.x,e.y);x.strokeStyle=`rgba(0,240,255,${0.06*(1-dist/120)})`;x.stroke()}})});requestAnimationFrame(draw)}
 window.addEventListener('resize',()=>{resize();init()});resize();init();draw();
+// Scroll Reveal
+const revealEls=document.querySelectorAll('section > *');revealEls.forEach(el=>el.classList.add('reveal'));const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.15});revealEls.forEach(el=>observer.observe(el));
+// Animated Counters
+function animateCounter(el,target,suffix){let current=0;const step=target/40;const interval=setInterval(()=>{current+=step;if(current>=target){current=target;clearInterval(interval)}el.textContent=Math.round(current)+(suffix||'')},30)}
+const counterObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){const nums=e.target.querySelectorAll('.stat-num');nums.forEach(n=>{const t=n.textContent;if(t==='4')animateCounter(n,4,'');else if(t==='10x'){animateCounter(n,10,'');setTimeout(()=>{n.textContent='10x'},1300)}else if(t==='1')animateCounter(n,1,'');else if(t==='0')n.textContent='0'});counterObs.unobserve(e.target)}})},{threshold:0.5});const statsEl=document.querySelector('.stats');if(statsEl)counterObs.observe(statsEl);
+// Mouse Glow
+const glow=document.createElement('div');glow.className='mouse-glow';document.body.appendChild(glow);document.addEventListener('mousemove',(e)=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'});
+// Terminal
+const heroC=document.querySelector('.hero-content');if(heroC){heroC.insertAdjacentHTML('beforeend','<div class="status-bar"><div class="status-dot"></div>System Online | Multi-Agent Network Active</div><div class="hero-terminal"><div class="terminal-line" id="tl1">$ agentx query "EV market analysis"</div><div class="terminal-line" id="tl2" style="color:#00ff88">Deploying agents: US, EU, CN, RU...</div><div class="terminal-line" id="tl3" style="color:#a855f7">Scanning Google, Baidu, Yandex, EU sources...</div><div class="terminal-line" id="tl4" style="color:#00ff88">Report ready. 4 regions. 47 sources.</div><div class="terminal-line" id="tl5">Session wiped. Zero trace.<span class="typing-cursor"></span></div></div>')}
+setTimeout(()=>{['tl1','tl2','tl3','tl4','tl5'].forEach((id,i)=>{setTimeout(()=>{const el=document.getElementById(id);if(el)el.classList.add('show')},i*700)})},1000);
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',(e)=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})});
 </script>
 </body>
 </html>
